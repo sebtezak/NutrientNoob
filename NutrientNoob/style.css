@@ -5,7 +5,7 @@ body {
     background-color: #F6F4F4;
 }
 
-header {
+.header {
     display: flex;
     justify-content: space-between;
     background-color: #C9D5B5;
@@ -47,7 +47,7 @@ header {
 
 .nav a {
     float: right;
-    color: #f2f2f2;
+    color: #F6F4F4;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -82,4 +82,104 @@ header {
 #login:hover,
 #signup:hover {
     background-color: #A9BD89;
+}
+
+/*Login and Sign Up form styling*/
+*{ /*text*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color:#F6F4F4;
+}
+
+.container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C9D5B5;
+}
+
+form{
+    margin-top: 10px;
+}
+
+form .inputField{
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #2C3328;
+}
+
+form .input{
+    height: 100%;
+    width: 100%;
+    color: #2C3328;
+}
+
+.loginButton button{
+    height: 40px;
+    width: 100%;
+    color: #2C3328;
+    background-color: #F6F4F4;
+    margin-top: 20px;
+    border-radius: 10px;
+    border-color: #2C3328;
+}
+
+.loginButton button:hover{
+    height: 40px;
+    width: 100%;
+    color: #2C3328;
+    background-color: #A1A78B;
+    color:#F6F4F4;
+    border-color: #f6f6f6;
+}
+
+.login{
+    background: #A9BD89;
+    border-radius: 10px;
+    max-width: 450px;
+    width: 100%;
+    padding: 50px;
+}
+
+.signup{
+    background: #A9BD89;
+    border-radius: 10px;
+    max-width: 450px;
+    width: 100%;
+    padding: 50px;
+}
+
+.link{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.link span{
+    font-size: 12px;
+
+}
+
+.link a{
+    text-decoration: none;
+    font-weight: bold;
+    font-style: bold;
+}
+
+.link a:hover{
+    text-decoration: underline;
+}
+
+#idTitle{
+    font-size: 30px;
+    font-weight: 400;
+    color: #F6F4F4;
+    text-align: center;
+}
+
+#signup{
+    margin-right: 10px;
 }
