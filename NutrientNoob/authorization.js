@@ -1,3 +1,18 @@
+
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.querySelector('form');
+
+  form.addEventListener('submit', function(event) {
+      // Prevent the form from actually submitting
+      event.preventDefault();
+
+      // Display the alert
+      alert('Button was pressed.');
+
+  });
+});
+
+
 // Store user info for login
 const userInfoMap = new Map();
 
