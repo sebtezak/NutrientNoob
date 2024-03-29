@@ -113,7 +113,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: darkseagreen;
+    color: #789051;
 }
 
 .container{
@@ -150,6 +150,7 @@ form .input{
     margin-top: 20px;
     border-radius: 10px;
     border-color: #2C3328;
+    cursor: pointer;
 }
 
 .loginButton button:hover{
@@ -206,4 +207,25 @@ form .input{
 
 #signup{
     margin-right: 10px;
+}
+
+.homeButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.homeButton button{
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.homeButton button:hover{
+    background-color: transparent;
+
 }
