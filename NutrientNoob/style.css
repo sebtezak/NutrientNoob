@@ -63,6 +63,30 @@ body {
     color: white;
   }
 
+    .nav input[type=search] {
+        float: right;
+        padding: 6px;
+        border: none;
+        margin-top: 8px;
+        margin-right: 16px;
+        font-size: 17px;
+        color: darkseagreen;
+    }
+
+.body {
+    background-color: #F6F4F4;
+    margin-top: auto;
+}
+
+.searchResults{
+    color: black;
+    margin: 20px;
+}
+
+#more{
+    display: none;
+}
+
 
 #user-buttons {
     display: flex;
@@ -89,7 +113,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color:#F6F4F4;
+    color: darkseagreen;
 }
 
 .container{
