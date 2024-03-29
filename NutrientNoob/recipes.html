@@ -13,49 +13,54 @@
 <body>
     <!--HEADER -- holds the navigation bar and logo-->
     <header>
-        <div class = "header">
-        
-        <!--LOGO HERE-->
-        <div class = "logo">
-            <img src ="images/Nutrient Noob Logo.png">
-        </div>
+        <div class="header">
 
-        <!--NAVIGATION BAR HERE-->
-        <div class ="nav">
-        <ul>
-            <li><a href="account.html">Account</a></li>
-            <li><a class = "active" href="recipes.html">Recipes</a></li>
-            <li><a href="index.html">Home</a></li>
+            <!--LOGO HERE-->
+            <div class="logo">
+                <img src="images/Nutrient Noob Logo.png">
+            </div>
 
-            <!--<li><input type = "text" placeholder = "Search..."></li>-->
-        </ul>
-        </div>
-        
-        
-        <div id="user-buttons">
-            <a href = "login.html">
-                <button id="login">Log In</button>
-            </a>
-            <a href = "signup.html">
-                <button id="signup">Sign Up</button>
-            </a>
-        </div>
+            <!--NAVIGATION BAR HERE-->
+            <div class="nav">
+                <ul>
+                    <li><a href="account.html">Account</a></li>
+                    <li><a class="active" href="recipes.html">Recipes</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <!--<input type="text" placeholder="Search..">-->
+                    <li><input type="search" placeholder="Search..."></li>
+                </ul>
+            </div>
+
+            <div id="user-buttons">
+                <a href="login.html">
+                    <button id="login">Log In</button>
+                </a>
+                <a href="signup.html">
+                    <button id="signup">Sign Up</button>
+                </a>
+            </div>
         </div>
 
     </header>
+    
+        <div class="body" id="body">
+            <div class="searchResults" id="searchResults">
+                <h1>Recipe Title/Name</h1>
+                <p>Here are the first x characters of the recipe description, ingredients, or however the information end up organized<span id="dots">...</span><span id="more"> and here is the rest of the description/maybe the entire recipe. And now I will write gibberish so that it goes to the second line or perhaps even further who knows pop pop pop.</span></p>
+                <button onclick="readMore()" id="readMoreBtn">Read more</button>
+            </div>
+        </div>
 
-    <main>
-        <h1>Home Page</h1>
+    
 
-    </main>
-
-    <div class = "sign-up" id = "sign-up">
-        <div id = "sign-upInfo" style = "display: none;" class = "sign-upInfo">
-            <div class = ></div>
+    <div class="sign-up" id="sign-up">
+        <div id="sign-upInfo" style="display: none;" class="sign-upInfo">
+            <div class=></div>
         </div>
     </div>
 
-</body>
+    <script src="readMore.js"></script>
 
+</body>
 
 </html>
