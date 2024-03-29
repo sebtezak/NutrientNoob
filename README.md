@@ -14,3 +14,4 @@ This README.md document will be updated as commits are made. Below is a rundown 
  
   - Commit 1: General HTML and CSS framework for website
   - Commit 2: Creation of the README.md file
+  - Commit 3: Update of unfinished HTML, CSS, and JS for recipe page, waiting on search result algorithm from backend
