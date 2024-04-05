@@ -1,76 +1,109 @@
+// Validating Password, Longer than 8 characters and needs at least 1 number and 1 capital letter
+function isValidPassword(password) {
+  if (password.length < 8) {
+    return false;
+  }
+  if (!/[A-Z]/.test(password)) {
+    return false;
+  } 
+  if (!/\d/.test(password)) {
+    return false;
+  }
+  return true;
+}
 
+// Saves user information to local storage
+function saveUserToLocalStorage(username, email, password) {
+  const user = { username, email, password };
+  localStorage.setItem(username, JSON.stringify(user));
+}
+
+// Retrieves user information from local storage
+function getUserFromLocalStorage(username) {
+  const userString = localStorage.getItem(username);
+  return userString ? JSON.parse(userString) : null;
+}
+
+// Checks if username already exists in local storage
+function isExistingUsername(username) {
+  return localStorage.getItem(username) !== null;
+}
+
+// Checks if any field is empty (made for the text boxes)
+function isEmptyField(field) {
+  return field.value.trim() === '';
+}
+
+// This deals with the Sign Up form
 document.addEventListener('DOMContentLoaded', function() {
-  var form = document.querySelector('form');
-
-  form.addEventListener('submit', function(event) {
-      // Prevent the form from actually submitting
+  const signupForm = document.querySelector('.signup form');
+  if (signupForm) {
+    signupForm.addEventListener('submit', function(event) {
       event.preventDefault();
 
-      // Display the alert
-      alert('Button was pressed.');
+      const usernameInput = this.querySelector('input[placeholder="Username"]');
+      const emailInput = this.querySelector('input[placeholder="Email"]');
+      const passwordInput = this.querySelector('input[placeholder="Password"]');
+      const confirmPasswordInput = this.querySelector('input[placeholder="Confirm Password"]');
 
-  });
-});
+      if (isEmptyField(usernameInput) || isEmptyField(emailInput) || isEmptyField(passwordInput) || isEmptyField(confirmPasswordInput)) {
+        alert('Please fill in all the text boxes.');
+        return;
+      }
 
+      const username = usernameInput.value;
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
 
-// Store user info for login
-const userInfoMap = new Map();
+      if (isExistingUsername(username)) {
+        alert('Username already exists. Please choose a different username.');
+        return;
+      }
 
-// Function to validate the password requirements: 
-// 8 Characters Long, At least 1 Capital Letter, At least 1 Number
-function validatePassword(password) {
-  return password.length >= 8 && /[A-Z]/.test(password) && /\d/.test(password);
-}
+      if (password !== confirmPassword) {
+        alert('Passwords do not match. Please try again.');
+        return;
+      }
 
-// Sign Up Function
-function handleSignUp(event) {
-  event.preventDefault();
+      if (!isValidPassword(password)) {
+        alert('Password must be at least 8 characters long, contain at least 1 capital letter and 1 number.');
+        return;
+      }
 
-  // Adjusting selectors to match the HTML class and type attributes
-  const username = document.querySelector('.signup .input[type="text"]').value; // Assuming this is the username
-  const password = document.querySelector('.signup .input[type="password"]:nth-of-type(1)').value; // First password input
-  const confirmPassword = document.querySelector('.signup .input[type="password"]:nth-of-type(2)').value; // Second password input
-
-  if (!validatePassword(password)) {
-    alert('Password must be at least 8 characters long, contain a number, and an uppercase letter.');
-    return;
+      // Saves the users information to local storage (successful Sign Up)
+      saveUserToLocalStorage(username, email, password);
+      alert('Sign up successful! You can now log in.');
+      window.location.href = 'login.html';
+    });
   }
 
-  if (password !== confirmPassword) {
-    alert('Passwords do not match.');
-    return;
-  }
-
-  // Store the user information with username as key
-  userInfoMap.set(username, { password: password });
-
-  // Here you would normally handle the AJAX request to submit the form data to the server.
-  console.log('Sign Up Success:', { username, password });
-}
-
-// Function to handle the login
-function handleLogin(event) {
-  event.preventDefault();
-
-  // Adjusting selectors to match the HTML class and type attributes
-  const username = document.querySelector('.login .input[type="text"]').value; // Assuming this is the username
-  const password = document.querySelector('.login .input[type="password"]').value; // Assuming this is the password
-
-  // Check if the user exists and password matches
-  if (userInfoMap.has(username) && userInfoMap.get(username).password === password) {
-    console.log('Login Success:', { username });
-  } else {
-    alert('Login Failed: Incorrect username or password.');
-  }
-}
-
-// Wait for the DOM to fully load before attaching event handlers
-document.addEventListener("DOMContentLoaded", function() {
-  // Attach the event handler for the sign-up form
-  const signUpForm = document.querySelector('.signup form');
-  signUpForm.addEventListener('submit', handleSignUp);
-
-  // Attach the event handler for the login form
+  // This deals with the Login form
   const loginForm = document.querySelector('.login form');
-  loginForm.addEventListener('submit', handleLogin);
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const usernameInput = this.querySelector('input[placeholder="Username"]');
+      const passwordInput = this.querySelector('input[placeholder="Password"]');
+
+      if (isEmptyField(usernameInput) || isEmptyField(passwordInput)) {
+        alert('Please fill in all the text boxes.');
+        return;
+      }
+
+      const username = usernameInput.value;
+      const password = passwordInput.value;
+
+      const user = getUserFromLocalStorage(username);
+
+      if (!user || user.password !== password) {
+        alert('Invalid username or password. Please try again.');
+        return;
+      }
+
+      // Change this part to link straight to their account page
+      alert('Log in successful!');
+    });
+  }
 });
