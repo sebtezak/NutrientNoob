@@ -2,9 +2,9 @@ import csv
 import os
 import random
 
-# This function makes the search more efficient
+# Load all of the data into a valid list (More Efficient)
 def load_and_filter_data(nutrient):
-    csv_file_path = 'NutrientNoob/RAW_nutrition.csv'
+    csv_file_path='NutrientNoob/RAW_nutrition.csv'
     nutrient_key = nutrient.strip().lower()
     valid_ingredients = []
 
@@ -18,7 +18,7 @@ def load_and_filter_data(nutrient):
 
     return valid_ingredients
 
-# This function randomly selects 20 ingredients from this shortened list
+# Randomize from the possible list
 def search_ingredients_by_nutrient(preloaded_data):
     return random.sample(preloaded_data, min(20, len(preloaded_data)))
 
@@ -26,8 +26,8 @@ def search_ingredients_by_nutrient(preloaded_data):
 # REPLACE WITH THE DROP DOWN VALUES!!! :)
 nutrient = input("Enter a nutrient to search for: ")
 
-preloaded_data = load_and_filter_data(nutrient)
-matching_ingredients = search_ingredients_by_nutrient(preloaded_data)
+# Gets list from function
+matching_ingredients = search_ingredients_by_nutrient(load_and_filter_data(nutrient))
 
 # REPLACE!!! Prints on terminal the list of 20 ingredients
 if matching_ingredients:
